@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Redirigiendo…</title>
+</head>
+<body>
+  <script>
+    (function(){
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        const hash = window.location.hash || '';
+
+        // If Supabase sent a ?code=... (confirmation) redirect to verify.html with that code in the hash
+        if (code) {
+          const target = '/verify.html#access_token=' + encodeURIComponent(code) + '&type=signup';
+          window.location.replace(target);
+          return;
+        }
+
+        // If URL already contains an access_token in the hash, forward to the correct page
+        if (hash.includes('access_token')) {
+          // if it's a recovery token, open reset-password, otherwise verify
+          if (hash.includes('type=recovery')) {
+            window.location.replace('/reset-password.html' + hash);
+          } else {
+            window.location.replace('/verify.html' + hash);
+          }
+          return;
+        }
+
+        // Default: go to verify page
+        window.location.replace('/verify.html');
+      } catch (e) {
+        console.error('Redirect helper error', e);
+        window.location.replace('/verify.html');
+      }
+    })();
+  </script>
+</body>
+</html>

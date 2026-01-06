@@ -1,0 +1,17 @@
+// Workaround for webview_flutter_android namespace issue
+android.buildTypes.configureEach {
+    // This is applied after all plugins are configured
+}
+
+// Add namespace to plugins that don't have it
+afterEvaluate {
+    def webviewPlugin = project.rootProject.allprojects.find {
+        it.name == 'webview_flutter_android'
+    }
+    
+    if (webviewPlugin != null) {
+        webviewPlugin.android {
+            namespace = 'io.flutter.plugins.webviewflutter'
+        }
+    }
+}

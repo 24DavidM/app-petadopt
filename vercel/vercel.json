@@ -1,0 +1,42 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/config.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "reset-password.html",
+            "use": "@vercel/static"
+        },
+        {
+            "src":"verify.html",
+            "use":"@vercel/static"
+        },
+        {
+            "src": "index.html",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/config",
+            "dest": "api/config.js"
+        },
+        {
+            "src": "/reset-password.html",
+            "dest": "/reset-password.html"
+        },
+        {
+            "src": "/verify.html",
+            "dest": "/verify.html"
+        },
+        {
+            "src": "/",
+            "dest": "/index.html",
+            "headers": {
+                "Cache-Control": "no-cache, no-store, must-revalidate"
+            }
+        }
+    ]
+}
