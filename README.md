@@ -69,9 +69,7 @@ lib/
 
 #### 💾 **Data Layer** (Acceso a datos)
 - **Data Sources**: Comunicación con APIs, bases de datos, storage
-  - `RemoteDataSource`: Llamadas a Supabase
-  - `LocalDataSource`: Cache local con SharedPreferences
-- **Models**: Implementaciones de entities con `fromJson/toJson`
+- **Models**: Implementaciones de entities con conversión a/from JSON
 - **Repository Implementations**: Implementan las interfaces del dominio
 
 #### 🎨 **Presentation Layer** (UI e interacción)
@@ -81,16 +79,18 @@ lib/
 
 ## 🔧 Tecnologías Principales
 
-- **Flutter** 3.x
-- **Supabase** (Backend as a Service)
-  - Autenticación (Email + Google OAuth)
-  - PostgreSQL con Row Level Security (RLS)
-  - Storage para imágenes
-- **flutter_bloc** - Gestión de estado
-- **get_it** - Inyección de dependencias
-- **dartz** - Programación funcional (Either para manejo de errores)
-- **equatable** - Comparación de objetos
-- **image_picker** - Selección de imágenes
+- **Flutter** 3.x / Dart SDK: ^3.10.4
+- **Supabase**: `supabase_flutter` ^2.12.0 (Auth, Postgres, Storage)
+- **Gestión de estado**: `flutter_bloc` ^9.1.1
+- **Inyección de dependencias**: `get_it` ^9.2.0
+- **Programación funcional / utilidades**: `dartz` ^0.10.1, `equatable` ^2.0.5
+- **HTTP / Config**: `http` ^1.6.0, `flutter_dotenv` ^6.0.0
+- **Autenticación / Enlaces**: `sign_in_with_apple` ^7.0.1, `app_links` (override to 6.2.0)
+- **Imágenes**: `image_picker` ^1.0.7, `flutter_local_notifications` ^18.0.1, `timezone` ^0.9.4
+- **Mapas & Geolocalización**: `flutter_map` ^7.0.2, `latlong2` ^0.9.1, `geolocator` ^13.0.2
+- **IA / Markdown**: `google_generative_ai` ^0.4.6, `flutter_markdown` ^0.7.0
+
+
 
 
 ## 🚀 Instalación y Configuración
